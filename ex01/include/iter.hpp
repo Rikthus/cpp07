@@ -4,12 +4,6 @@
 # include <iostream>
 # include <string>
 
-template<typename T>
-void	print_current(T const & elem)
-{
-	std::cout << elem << std::endl;
-}
-
 template< typename T >
 void	iter(T *tab, size_t tabSize, void (*fct)(T const &))
 {
