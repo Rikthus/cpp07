@@ -56,6 +56,7 @@ int main(int, char**)
     std::cout << "COMPLEMENTARY TESTS----------------------------" << std::endl;
 
     Array<>					emptyArray;
+    Array<std::string>		stringer;
     Array< char >			charged(5);
     Array< Array< float > >	inception(2);
 	Array< float >			floatability(5);

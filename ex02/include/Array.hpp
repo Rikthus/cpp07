@@ -3,7 +3,7 @@
 
 # include <iostream>
 
-template< typename T = int > // IS THIS GOOD FOR DEFAULT BEHAVIOR ?
+template< typename T = int >
 class	Array
 {
 	public:
@@ -18,7 +18,7 @@ class	Array
 			{
 				this->mArray = new T[this->mSize];
 				for (unsigned int i = 0; i < this->mSize; i++)
-					this->mArray[i] = 0; // 				NOT VERY SURE OF THIS
+					this->mArray[i] = T();
 			}
 			else
 				this->mArray = NULL;
@@ -65,14 +65,14 @@ class	Array
 
 		T &	operator[](unsigned int index)
 		{
-			if (index >= this->mSize || index < 0)  // DO I NEED TO CHECK NEGATIVE UNSIGNED INT ?
+			if (index >= this->mSize)
 				throw(IndexOutOfArrayRange());
 			return (this->mArray[index]);
 		}
 
 		T const &	operator[](unsigned int index) const
 		{
-			if (index >= this->mSize || index < 0)  // DO I NEED TO CHECK NEGATIVE UNSIGNED INT ?
+			if (index >= this->mSize)
 				throw(IndexOutOfArrayRange());
 			return (this->mArray[index]);
 		}
