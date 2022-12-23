@@ -56,11 +56,25 @@ int main(int, char**)
     std::cout << "COMPLEMENTARY TESTS----------------------------" << std::endl;
 
     Array<>					emptyArray;
-    Array<std::string>		stringer;
+    Array<std::string>		stringer(4);
+    Array<int>		        integered(3);
     Array< char >			charged(5);
     Array< Array< float > >	inception(2);
 	Array< float >			floatability(5);
 	Array< float >			floatability2(6);
+
+    std::cout << integered[0] << std::endl;
+    std::cout << integered[1] << std::endl;
+    std::cout << integered[2] << std::endl;
+
+    std::cout << std::endl;
+
+    std::cout << stringer[0] << std::endl;
+    std::cout << stringer[1] << std::endl;
+    std::cout << stringer[2] << std::endl;
+    std::cout << stringer[3] << std::endl;
+
+    std::cout << std::endl;
 
 	floatability[0] = 0;
 	floatability[1] = -4.1;
