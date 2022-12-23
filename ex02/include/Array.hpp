@@ -14,15 +14,25 @@ class	Array
 
 		Array(unsigned int n) : mSize(n)
 		{
-			this->mArray = new T[this->mSize]
-			for (unsigned int i = 0; i < this->mSize; i++)
-				this->mArray[i] = 0; // 				NOT VERY SURE OF THIS
+			if (this->mSize > 0)
+			{
+				this->mArray = new T[this->mSize];
+				for (unsigned int i = 0; i < this->mSize; i++)
+					this->mArray[i] = 0; // 				NOT VERY SURE OF THIS
+			}
+			else
+				this->mArray = NULL;
 		}
 		Array(Array const & src) : mSize(src.mSize)
 		{
-			this->mArray = new T[this->mSize];
-			for (unsigned int i = 0; i < this->mSize; i++)
-				this->mArray[i] = src.mArray[i];
+			if (this->mSize > 0)
+			{
+				this->mArray = new T[this->mSize];
+				for (unsigned int i = 0; i < this->mSize; i++)
+					this->mArray[i] = src.mArray[i];
+			}
+			else
+				this->mArray = NULL;
 		}
 		Array(void) : mArray(NULL), mSize(0)
 		{
@@ -41,17 +51,30 @@ class	Array
 				if (this->mSize > 0)
 					delete [] this->mArray;
 				this->mSize = rhs.mSize;
-				this->mArray = new T[this->mSize];
-				for (unsigned int i = 0; i < this->mSize; i++)
-					this->mArray[i] = rhs.mArray[i];
+				if (this->mSize > 0)
+				{
+					this->mArray = new T[this->mSize];
+					for (unsigned int i = 0; i < this->mSize; i++)
+						this->mArray[i] = rhs.mArray[i];
+				}
+				else
+					this->mArray = NULL;
 			}
 			return (*this);
 		}
 
 		T &	operator[](unsigned int index)
 		{
-			if (index >= this->mSize || index < 0)
+			if (index >= this->mSize || index < 0)  // DO I NEED TO CHECK NEGATIVE UNSIGNED INT ?
 				throw(IndexOutOfArrayRange());
+			return (this->mArray[index]);
+		}
+
+		T const &	operator[](unsigned int index) const
+		{
+			if (index >= this->mSize || index < 0)  // DO I NEED TO CHECK NEGATIVE UNSIGNED INT ?
+				throw(IndexOutOfArrayRange());
+			return (this->mArray[index]);
 		}
 
 		class	IndexOutOfArrayRange : public std::exception
